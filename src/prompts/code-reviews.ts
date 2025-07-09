@@ -180,6 +180,7 @@ When reviewing updates to a PR:
 4. Only comment on new issues or unresolved previous issues
 5. Consider the cumulative impact of changes
 6. IMPORTANT: Only use line numbers that appear in the current "diff" field
+7. The comment's language should be the same as the pull_request's title
 `;
 
 export default baseCodeReviewPrompt;

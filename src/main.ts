@@ -22,7 +22,7 @@ async function main() {
     const projectContext = core.getInput('PROJECT_CONTEXT');
     const contextFiles = core.getInput('CONTEXT_FILES').split(',').map(f => f.trim());
     const excludePatterns = core.getInput('EXCLUDE_PATTERNS');
-
+    core.info(`aiProvider.initialize ${provider} ${model} ${apiKey}`);
     // Initialize services
     const aiProvider = getProvider(provider);
     await aiProvider.initialize({
@@ -48,12 +48,12 @@ async function main() {
 
     // Get PR number from GitHub context
     const prNumber = getPRNumberFromContext();
-    
+    core.info(`star review ${prNumber}`);
     // Perform review
     const review = await reviewService.performReview(prNumber);
-    
+
     core.info(`Review completed with ${review.lineComments?.length ?? 0} comments`);
-    
+
   } catch (error: unknown) {
     core.setFailed(`Action failed: ${(error as Error).message}`);
   }
