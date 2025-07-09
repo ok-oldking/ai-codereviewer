@@ -5,9 +5,9 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 const token = process.env.GITHUB_TOKEN;
-const owner = 'demandio';
-const repo = process.argv[2] || 'simplycodes-extension';
-const pr_number = parseInt(process.argv[3], 10) || 982;
+const owner = process.argv[2] || 'demandio';
+const repo = process.argv[3] || 'simplycodes-extension';
+const pr_number = parseInt(process.argv[4], 10) || 982;
 
 if (!owner || !repo || isNaN(pr_number)) {
   console.error('Usage: ts-node generate-pr-payload.ts [owner] [repo] [pr_number]');
@@ -16,7 +16,7 @@ if (!owner || !repo || isNaN(pr_number)) {
 
 async function generatePRPayload() {
   const octokit = new Octokit({ auth: token });
-  
+  console.log(`octokit.pulls ${owner} ${repo} ${pr_number}`)
   // Get PR details
   const { data: pr } = await octokit.pulls.get({
     owner,
