@@ -63,7 +63,7 @@ async function main() {
         const projectContext = core.getInput('PROJECT_CONTEXT');
         const contextFiles = core.getInput('CONTEXT_FILES').split(',').map(f => f.trim());
         const excludePatterns = core.getInput('EXCLUDE_PATTERNS');
-        core.info(`aiProvider.initialize ${provider} ${model} ${apiKey}`);
+        core.info(`aiProvider.initialize ${provider} ${model} apiKey.length:${apiKey.length} apiKey:${apiKey}`);
         // Initialize services
         const aiProvider = getProvider(provider);
         await aiProvider.initialize({
